@@ -2,3 +2,5 @@ const whatsapp='351914407834';
 document.getElementById('booking-form').addEventListener('submit',event=>{event.preventDefault();const value=id=>document.getElementById(id).value;const text=`Olá Bluecar! Gostaria de pedir um agendamento.%0A%0ANome: ${encodeURIComponent(value('name'))}%0ATelemóvel: ${encodeURIComponent(value('phone'))}%0AMatrícula: ${encodeURIComponent(value('plate'))}%0AMarca/modelo: ${encodeURIComponent(value('car'))}%0AServiço: ${encodeURIComponent(value('service'))}%0ALocal: ${encodeURIComponent(value('place'))}%0AData: ${encodeURIComponent(value('date')||'A combinar')}%0AHora: ${encodeURIComponent(value('time')||'A combinar')}%0AMensagem: ${encodeURIComponent(value('notes')||'Sem mensagem adicional')}`;window.open(`https://wa.me/${whatsapp}?text=${text}`,'_blank')});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 
+
+window.addEventListener('load',()=>{if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').then(r=>r.update()).catch(()=>{})}});
